@@ -4,7 +4,7 @@
 #
 Name     : azure-cli-core
 Version  : 2.5.1
-Release  : 1
+Release  : 2
 URL      : https://files.pythonhosted.org/packages/66/cc/a01f7837274ef9be79b2c4e1ba03a072bc7f3885a7567e1d9e68204e0ea1/azure-cli-core-2.5.1.tar.gz
 Source0  : https://files.pythonhosted.org/packages/66/cc/a01f7837274ef9be79b2c4e1ba03a072bc7f3885a7567e1d9e68204e0ea1/azure-cli-core-2.5.1.tar.gz
 Summary  : Microsoft Azure Command-Line Tools Core Module
@@ -13,24 +13,45 @@ License  : MIT
 Requires: azure-cli-core-python = %{version}-%{release}
 Requires: azure-cli-core-python3 = %{version}-%{release}
 Requires: PyJWT
+Requires: adal
+Requires: argcomplete
+Requires: azure-cli-telemetry
+Requires: azure-mgmt-core
+Requires: azure-mgmt-resource
 Requires: colorama
 Requires: humanfriendly
 Requires: jmespath
+Requires: knack
+Requires: msal
+Requires: msal-extensions
 Requires: msrest
 Requires: msrestazure
 Requires: paramiko
 Requires: pkginfo
 Requires: pyasn1
+Requires: requests
+Requires: six
 BuildRequires : PyJWT
+BuildRequires : adal
+BuildRequires : argcomplete
+BuildRequires : azure-cli-telemetry
+BuildRequires : azure-mgmt-core
+BuildRequires : azure-mgmt-resource
 BuildRequires : buildreq-distutils3
 BuildRequires : colorama
 BuildRequires : humanfriendly
 BuildRequires : jmespath
+BuildRequires : knack
+BuildRequires : msal
+BuildRequires : msal-extensions
 BuildRequires : msrest
 BuildRequires : msrestazure
 BuildRequires : paramiko
 BuildRequires : pkginfo
 BuildRequires : pyasn1
+BuildRequires : requests
+BuildRequires : six
+Patch1: Remove-dependencies-constraints.patch
 
 %description
 ==================================
@@ -77,13 +98,14 @@ python3 components for the azure-cli-core package.
 %prep
 %setup -q -n azure-cli-core-2.5.1
 cd %{_builddir}/azure-cli-core-2.5.1
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1588624046
+export SOURCE_DATE_EPOCH=1588962998
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib

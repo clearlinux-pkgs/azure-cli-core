@@ -1,0 +1,37 @@
+From f4193bf341eca43d70039d0f6160ddcfd3a74425 Mon Sep 17 00:00:00 2001
+From: Athenas Jimenez <athenas.jimenez.gonzalez@intel.com>
+Date: Fri, 8 May 2020 11:34:46 -0700
+Subject: [PATCH] Remove dependencies constraints
+
+Signed-off-by: Athenas Jimenez <athenas.jimenez.gonzalez@intel.com>
+---
+ setup.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 7e73c72..3acd454 100644
+--- a/setup.py
++++ b/setup.py
+@@ -57,8 +57,8 @@ DEPENDENCIES = [
+     'humanfriendly>=4.7,<9.0',
+     'jmespath',
+     'knack==0.7.0rc4',
+-    'msal~=1.0.0',
+-    'msal-extensions~=0.1.3',
++    'msal',
++    'msal-extensions',
+     'msrest>=0.4.4',
+     'msrestazure>=0.6.3',
+     'paramiko>=2.0.8,<3.0.0',
+@@ -68,7 +68,7 @@ DEPENDENCIES = [
+     'six~=1.12',
+     'pkginfo>=1.5.0.1',
+     'azure-mgmt-resource==9.0.0',
+-    'azure-mgmt-core==1.0.0'
++    'azure-mgmt-core'
+ ]
+ 
+ TESTS_REQUIRE = [
+-- 
+2.26.2
+
